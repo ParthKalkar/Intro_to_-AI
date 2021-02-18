@@ -1,0 +1,28 @@
+higher(X, Y, [X | T]) :-
+    member(Y, T).
+
+higher(X, Y, [_ | T]) :-
+    higher(X, Y, T).
+
+not_adjacent(X, Y, [X, Z | T]) :-
+	Z \== Y,
+	member(Y, T).
+
+not_adjacent(X, Y, [Y, Z | T]) :-
+    Z \== X,
+    member(X, T).
+
+not_adjacent(X, Y, [_ | T]) :-
+    not_adjacent(X, Y, T).
+    
+puzzle(L):-
+	L = [Top, _, _, _, Bottom],
+	permutation(L, [adam, bill, claire, david, eric]),
+	adam \== Top,
+	bill \== Bottom,
+	claire \== Top,
+	claire \== Bottom,
+	higher(david, bill, L),
+	not_adjacent(bill, claire, L),
+	not_adjacent(eric, claire, L).
+	

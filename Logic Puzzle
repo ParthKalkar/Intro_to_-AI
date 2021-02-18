@@ -26,3 +26,4 @@ puzzle(L):-
 	not_adjacent(bill, claire, L),
 	not_adjacent(eric, claire, L).
 	
+#For task description refer the readme file

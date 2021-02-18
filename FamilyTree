@@ -1,0 +1,15 @@
+man(shrikant).
+man(parth).
+man(shivam).
+woman(alka).
+woman(pramila).
+son(parth , shrikant).
+son(parth , alka).
+son(shivam , shrikant).
+son(shivam , alka).
+daughter(alka, pramila).
+father( A , B ):- man(A), (son(B,A) ; daughter(B,A)).
+mother( A , B ):- woman(A), (son(B,A) ; daughter(B,A)).
+siblings(A , B):- father(C , A) , father(C , B), A \== B.
+parent(A, B):- mother(A, B); father(A, B).
+grandmother(A, B):- woman(A), parent(A, C), parent(C, B).
